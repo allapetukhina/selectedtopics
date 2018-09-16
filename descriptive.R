@@ -20,8 +20,8 @@ Palladiumd         = Quandl("CHRIS/CME_PA1", type="ts", start_date='2013-01-01',
 
 #PLOT TIME SERIES
 par(mfrow= c(2,1))
-plot(Platinum[,"Settle"],     main="Platin No. 11 Futures ICE", xlab = "time",    ylab="Daily future price in USD", col = "grey")
-plot(Palladiumd[,"Settle"],  main="Palladium Futures ICE",     xlab = "time",    ylab="Daily future price in USD", col = "black")
+plot(Platinum[,"Settle"],     main="(a) time series ", xlab = "time",    ylab="Daily price in USD", col = "grey")
+plot(Palladiumd[,"Settle"],   main="(b) time series",  xlab = "time",    ylab="Daily price in USD", col = "black")
 
 #SUMMARY STATISTICS
 summary(Platinum[, "Settle"])
@@ -46,8 +46,20 @@ palladium          = palladium[-1,]
 
 #PLOT RETURN SERIES
 par(mfrow=c(2,1))
-plot(platin,     main="(a) Platinum No. 11 Futures ICE daily returns", xlab = "time", ylab="daily returns",  col  = "darkgrey")
-plot(palladium,  main="(b) Palladium Futures ICE daily returns" ,      xlab = "time", ylab="daily returns",  col  = "black")
+plot(platin,     main="(a) Returns series",
+      xlab = "time", ylab="daily returns",  col  = "darkgrey")
+plot(palladium,  main="(b) Return series",
+     xlab = "time", ylab="daily returns",  col  = "black")
+
+####
+dev.off()
+par(mfrow = c(2,2))
+hist(platin, probability =TRUE, freq = F, main= "(a) Kernel density estimation",  ylim = c(0, 40))
+lines(density(platin, kernel="gaussian"), col="hotpink", xlab ="returns")
+hist(palladium, probability = TRUE, freq = F,  xlab ="returns",ylim = c(0, 40), main= "(b) Kernel density estimation")
+lines(density(platin, kernel="gaussian"), col="hotpink")
+qqnorm(platin, col="hotpink")
+qqnorm(palladium, col="hotpink")
 
 
 
