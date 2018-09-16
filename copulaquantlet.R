@@ -28,11 +28,6 @@ Palladiumd         = Quandl("CHRIS/CME_PA1", type="ts", start_date='2013-01-01',
 
 #DESCRIPTIVE STATISTICS
 
-#PLOT TIME SERIES
-par(mfrow= c(2,1))
-plot(Platinum,     main="Platin No. 11 Futures ICE", xlab = "time",    ylab="Daily future price in USD", col = "grey")
-plot(Palladiumd,  main="Palladium Futures ICE",     xlab = "time",    ylab="Daily future price in USD", col = "black")
-
 #SUMMARY STATISTICS
 summary(Platinum[, "Settle"])
 summary(Palladiumd[,"Settle"])
