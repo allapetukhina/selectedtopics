@@ -61,6 +61,12 @@ lines(density(platin, kernel="gaussian"), col="hotpink")
 qqnorm(platin, col="hotpink")
 qqnorm(palladium, col="hotpink")
 
+############
+#Inference##
+###########
+ks.test(coredata(platin), "pnorm")
+ks.test(coredata(palladium), "pnorm")
+ks.test(coredata(palladium), coredata(platin))
 
 
 
